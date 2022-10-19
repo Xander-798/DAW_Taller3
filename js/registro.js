@@ -1,5 +1,3 @@
-var x;
-x= 0;
 //Registrar el evento click al presionar el boton de Registro
 function iniciar(){
     var btnenviar = document.getElementById("btnReg");
@@ -26,17 +24,18 @@ function iniciar(){
     //los valores ingresados en el formulario
     if(btnenviar.addEventListener){
         btnenviar.addEventListener("click", function(){
+
             var chkvalue, selvalue, nuevoUsuario;
 
             var radios = document.getElementsByName('gender');
 
             //determinar cual input radio está seleccionado (Sexo/Género)
-            for (var i = 0; i <  radios.length; i++) {
+            /*for (var i = 0; i <  radios.length; i++) {
                 if (radios[i].checked) {
                    chkvalue = radios[i].value;
                   break;
                 }
-            }
+            }*/
 
             var seleccion = showRadioSelected(document.frmRegistro.radcolor);
 
@@ -58,12 +57,12 @@ function iniciar(){
                 }
 
             //deterina la selección de rol
-            selvalue = document.frmRegistro.seldegree.options[frmRegistro.seldegree.selectedIndex].value;
+            //selvalue = document.frmRegistro.seldegree.options[frmRegistro.seldegree.selectedIndex].value;
 
             //Objeto a registrar
             nuevoUsuario = new Usuario(document.frmRegistro.nombre.value, document.frmRegistro.apellidos.value, 
-                document.frmRegistro.edad.value, chkvalue, selvalue, document.frmRegistro.selfab.value,
-                document.frmRegistro.selmod.value, seleccion, document.frmRegistro.txtanio.value);
+                document.frmRegistro.dui.value, document.frmRegistro.nit.value, document.frmRegistro.fecha.value, document.frmRegistro.placa.value,seleccion ,document.frmRegistro.selfab.value,
+                document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
 
                 nuevoUsuario.registrar();
                 nuevoUsuario.mostrar();
@@ -95,12 +94,12 @@ function iniciar(){
             }            
 
             //deterina la selección de rol
-            selvalue = document.frmRegistro.seldegree.options[frmRegistro.seldegree.selectedIndex].value;
+            //selvalue = document.frmRegistro.seldegree.options[frmRegistro.seldegree.selectedIndex].value;
 
             //Objeto a registrar
             nuevoUsuario = new Usuario(document.frmRegistro.nombre.value, document.frmRegistro.apellidos.value, 
-                document.frmRegistro.edad.value, chkvalue, selvalue, document.frmRegistro.selfab.value,
-                document.frmRegistro.selmod.value, seleccion, document.frmRegistro.txtanio.value);
+                document.frmRegistro.dui.value, document.frmRegistro.nit.value, document.frmRegistro.fecha.value, document.frmRegistro.placa.value, seleccion ,document.frmRegistro.selfab.value,
+                document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
 
                 nuevoUsuario.registrar();
                 nuevoUsuario.mostrar();
@@ -155,33 +154,68 @@ else if(window.attachEvent){
 
 //Definiendo la clase Usuario a través del uso de sintexis de función
 
-function Usuario(nombre, apellido, edad, sexo, rol, fabrica, modelo, color, año){
+function Usuario(nombre, apellido, dui, nit, fecha, placa, color, fabrica, modelo, año ,fallas){
     //Propiedades de la clase
     this.nombre = nombre;
     this.apellidos = apellido;
-    this.edad = edad;
-    this.sexo = sexo;
-    this.rol = rol;
+    this.dui = dui;
+    this.nit = nit;
     this.fabrica = fabrica;
     this.modelo = modelo;
     this.color = color;
     this.año = año;
-    this.id = null;
+    this.placa = placa;
+    this.fecha = fecha;
+    this.fallas = fallas;
 
     //Métodos de la clase
     this.registrar = function(){
-        var cod = this.setcod();
+        var nombre = [];
+        var dui = [];
+        var apellidos = [];
+        var fabrica = [];
+        var nit = [];
+        var modelo = [];
+        var color = [];
+        var año = [];
+        var placa = [];
+        var fecha = [];
+        var fallas = [];
+
+        nombre.push(this.nombre);
+        apellidos.push(this.apellidos);
+        dui.push(this.dui);
+        nit.push(this.nit);
+        placa.push(this.placa);
+        fallas.push(this.fallas);
+        fecha.push(this.fecha);
+        año.push(this.año);
+        color.push(this.color);
+        modelo.push(this.modelo);
+        fabrica.push(this.fabrica);
+
+        localStorage.setItem("nombre",JSON.stringify(nombre));
+        localStorage.setItem("apellido",JSON.stringify(apellidos));
+        localStorage.setItem("dui",JSON.stringify(dui));
+        localStorage.setItem("nit",JSON.stringify(nit));
+        localStorage.setItem("placa",JSON.stringify(placa));
+        localStorage.setItem("color",JSON.stringify(color));
+        localStorage.setItem("modelo",JSON.stringify(modelo));
+        localStorage.setItem("fabrica",JSON.stringify(fabrica));
+        localStorage.setItem("año",JSON.stringify(año));
+        localStorage.setItem("fecha",JSON.stringify(fecha));
+        localStorage.setItem("fallas",JSON.stringify(fallas));
     };
 
-    this.setcod = function(){
+    /*this.setcod = function(){
         var fecha = new Date();
         var year = fecha.getFullYear();
         var letras = this.letras();
-        var alet = this.rand();
+        //var alet = this.rand();
 
         //contruir ID
-        this.id = letras + year + alet;
-    }
+        //this.id = letras + year + alet;
+    }*/
 
     this.letras = function(){
         var arre = this.apellidos + '';
@@ -201,36 +235,97 @@ function Usuario(nombre, apellido, edad, sexo, rol, fabrica, modelo, color, año
         return fin;
     };
     
-    this.rand = function(){
+    /*this.rand = function(){
         var lok;
         lok = Math.random() * (9999 - 1000) + 1000;
         lok = parseInt(lok);
         return lok;
-    };
+    };*/
 
     this.mostrar = function(){
-        pantalla = document.getElementById('tabla');
-        var table = document.getElementsByTagName('table');    
-        
-        if(x == 0){            
-            let table = document.createElement('table');
-            let header = document.createElement('thead');
-            let body = document.createElement('tr');
+        var tbody = document.getElementById("tbody");
 
-            pantalla.appendChild(table);
-            
-            table.appendChild(body);          
-            table.appendChild(header);
-            header.innerHTML = "<thead>\n\t<tr>\n\t\t<th colspan=\"9\">Datos del Reparaciones</th>\n";
-            header.innerHTML += "<th>Nombre</th><th>DUI</th><th>NIT</th><th>Marca (automóvil)</th><th>Modelo</th><th>Año</th><th>Color</th><th>Placa</th><th>Fallas</th>";             
-            body.innerHTML += "<td>"+ this.nombre +"</td><td>"+ this.id +"</td><td>"+ this.año +"</td><td>"+ this.marcas +"</td><td>"+ this.modelo +"</td><td>"+ this.año +"</td><td>"+ this.color +"</td><td>"+ this.id +"</td><td>"+ this.rol +"</td>";
-            x++;
-        }else{
-            var table = document.getElementsByTagName('table');
-            let body = document.createElement('tr');
-            table[0].appendChild(body);
-            body.innerHTML += "<td>"+ this.nombre +"</td><td>"+ this.id +"</td><td>"+ this.año +"</td><td>"+ this.marcas +"</td><td>"+ this.modelo +"</td><td>"+ this.año +"</td><td>"+ this.color +"</td><td>"+ this.id +"</td><td>"+ this.rol +"</td>";
-        }
+        tbody.innerHTML = '';
+
+        var nombre;
+        var duiN;
+        var apellidos;
+        var fabrica;
+        var nit;
+        var modelo;
+        var color;
+        var año;
+        var placa;
+        var fecha;
+        var fallas;
+
+        nombre = JSON.parse(localStorage.getItem("nombre"));
+        apellidos = JSON.parse(localStorage.getItem("apellido"));
+        duiN = JSON.parse(localStorage.getItem("dui"));
+        modelo = JSON.parse(localStorage.getItem("modelo"));
+        color = JSON.parse(localStorage.getItem("color"));
+        año = JSON.parse(localStorage.getItem("año"));
+        fecha = JSON.parse(localStorage.getItem("fecha"));
+        fallas = JSON.parse(localStorage.getItem("fallas"));
+        fabrica = JSON.parse(localStorage.getItem("fabrica"));
+        nit = JSON.parse(localStorage.getItem("nit"));
+        placa = JSON.parse(localStorage.getItem("placa"));
+
+        var cant = placa.length;
+
+for(var i = 0; i < cant ; i++){
+        var fila = document.createElement("tr");
+
+        var celdaNombre = document.createElement("td"),
+        celdaApe = document.createElement("td"),
+        celdaDui = document.createElement("td"),
+        celdaAño = document.createElement("td"),
+        celdaColor = document.createElement("td"),
+        celdaModelo = document.createElement("td"),
+        celdaFabrica = document.createElement("td"),
+        celdaNit = document.createElement("td"),
+        celdaPlaca = document.createElement("td"),
+        celdaFalla = document.createElement("td"),
+        celdaFecha = document.createElement("td");
+
+        var txtNombre = document.createTextNode(nombre[i]),
+        txtApe = document.createTextNode(apellidos[i]),
+        txtPlaca = document.createTextNode(placa[i]),
+        txtModelo = document.createTextNode(modelo[i]),
+        txtDui = document.createTextNode(duiN[i]),
+        txtNit = document.createTextNode(nit[i]),
+        txtAño = document.createTextNode(año[i]),
+        txtFecha = document.createTextNode(fecha[i]),
+        txtFallas = document.createTextNode(fallas[i]),
+        txtColor = document.createTextNode(color[i]),
+        txtFabrica = document.createTextNode(fabrica[i]);
+        
+        celdaNombre.appendChild(txtNombre);
+        celdaApe.appendChild(txtApe);
+        celdaColor.appendChild(txtColor);
+        celdaFalla.appendChild(txtFallas);
+        celdaNit.appendChild(txtNit);
+        celdaDui.appendChild(txtDui);
+        celdaModelo.appendChild(txtModelo);
+        celdaFabrica.appendChild(txtFabrica);
+        celdaAño.appendChild(txtAño);
+        celdaPlaca.appendChild(txtPlaca);
+        celdaFecha.appendChild(txtFecha);
+
+        fila.appendChild(celdaNombre);
+        fila.appendChild(celdaApe);
+        fila.appendChild(celdaColor);
+        fila.appendChild(celdaModelo);
+        fila.appendChild(celdaFabrica);
+        fila.appendChild(celdaFalla);
+        fila.appendChild(celdaPlaca);
+        fila.appendChild(celdaAño);
+        fila.appendChild(celdaFecha);
+        fila.appendChild(celdaNit);
+        fila.appendChild(celdaDui);
+
+        tbody.appendChild(fila); 
+}
     };
 
 }
