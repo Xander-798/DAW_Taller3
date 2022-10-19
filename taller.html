@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reparautos.css">
-    
+    <link rel="stylesheet" href="css/style.css">
     <title>Autos Contentos - Taller de mecánica</title>
 </head>
 <body>
     <header>
-        <h1>Reparación de automóviles</h1>
+        <h1>Automóviles ingresados</h1>
     </header>
     <section>
         <article>
@@ -18,53 +17,25 @@
                 <legend>Registro</legend>
                 
                 <fieldset>
-                    <legend>Datos del Dueño</legend>
+                    <legend>Datos Personales</legend>
 
-                    <div>
-                        <label for="nombre">Nombre: </label>
+                    <label for="nombre">Nombre: </label>
                     <input type="text" name="nombre" id="nombre" placeholder="(nombre)" required>
-                    </div>
 
-                    <div>
-                        <label for="apellidos">Apellidos: </label>
+                    <label for="apellidos">Apellidos: </label>
                     <input type="text" name="apellidos" id="apellidos" placeholder="(apellidos)" required>
-                    </div>
 
-                    <div>
-                        <label for="edad">Edad: </label>
-                    <input type="number" name="edad" id="edad" value="18" required>
-                    </div>
+                    <label for="dui">DUI: </label>
+                    <input type="number" name="dui" id="dui" placeholder="Sólo números" required maxlength="9" minlength="9">
 
-                    <div class="genero">
-                        <label for="gender">Genero: </label>
-                        <input type="radio" name="gender" value="Masculino" checked="checked">Masculino
-                        <input type="radio" name="gender" value="Femenino">Femenino
-                    </div>
+                    <label for="nit">NIT: </label>
+                    <input type="number" name="nit" id="nit" placeholder="Sólo números" required maxlength="14" minlength="14">
 
-                    <select name="seldegree" id="seldegree">
-                        <option disabled="" selected="" value="0">(Seleccione una carrera)</option>
-                        <option value="Ingeniería en Computación">Ingeniería en Computación</option>
-                        <option value="Ingeniería en Mecatrónica">Ingeniería en Mecatrónica</option>
-                        <option value="Ingeniería Industrial">Ingeniería Industrial</option>
-                        <option value="Ingeniería Biomédica">Ingeniería Biomédica</option>
-                        <option value="Ingeniería en Telecomunicaciones">Ingeniería en Telecomunicaciones</option>
-                        <option value="Ingeniería Aeronáutica">Ingeniería Aeronáutica</option>
-                        <option value="Licenciatura en Mercadotecnia">Licenciatura en Mercadotecnia</option>
-                        <option value="Licenciatura en Idiomas">Licenciatura en Idiomas</option>
-                        <option value="Licenciatura de Diseño Gráfico">Licenciatura de Diseño Gráfico</option>
-                        <option value="Licenciatura en Comunicación">Licenciatura en Comunicación</option>
-                        <option value="Licenciatura en Administración de Empresas">Licenciatura en Administración de Empresas</option>
-                        <option value="Técnico en Computación">Técnico en Computación</option>
-                        <option value="Técnico en Multimedia">Técnico en Multimedia</option>
-                        <option value="Técnico en Ortesis y Prótesis">Técnico en Ortesis y Prótesis</option>
-                    </select>
                 </fieldset>
                 <fieldset>
                     <legend>Datos del automóvil</legend>
 
-                    <fieldset id="fldcar" class="group">
-                        <div>
-                            <label for="selfab">Fabricante: </label>
+                        <label for="selfab">Fabricante: </label>
                         
                         <select name="selfab" id="selfab">
                             <option value="Toyota">Toyota</option>
@@ -75,45 +46,48 @@
                             <option value="Honda">Honda</option>
                             <option value="Mitsubishi">Mitsubishi</option>
                         </select>
-                        </div>
                         
-                        <div><label for="selmod">Modelo: </label>
-                            <select name="selmod" id="selmod">
-                                <option value="Corolla">Corolla</option>
-                                <option value="Echo">Echo</option>
-                                <option value="Yaris">Yaris</option>
-                                <option value="Avensis">Avensis</option>
-                                <option value="Camry">Camry</option>
-                                <option value="Land Cruiser">Land Cruiser</option>
-                                <option value="4 Runner">4 Runner</option>
-                                <option value="Hilux">Hilux</option>
-                            </select>
-                        </div>
+                        <label for="selmod">Modelo: </label>
+                        <select name="selmod" id="selmod">
+                            <option value="Corolla">Corolla</option>
+                            <option value="Echo">Echo</option>
+                            <option value="Yaris">Yaris</option>
+                            <option value="Avensis">Avensis</option>
+                            <option value="Camry">Camry</option>
+                            <option value="Land Cruiser">Land Cruiser</option>
+                            <option value="4 Runner">4 Runner</option>
+                            <option value="Hilux">Hilux</option>
+                        </select>
+<br>
+                    <label for="radcolor" class="colores">Color:</label><br />
+                    <input type="radio" value="Blanco" alt="Marque el color del carro" id="radcolor" name="radcolor" checked="checked"/>
+                    <label for="radcolor" class="colores">Blanco</label><br>
+                    <input type="radio" value="Negro" alt="Marque el color del carro" id="radcolor" name="radcolor" />
+                    <label for="radcolor" class="colores">Negro</label><br>
+                    <input type="radio" value="Gris" alt="Marque el color del carro" id="radcolor" name="radcolor" />
+                    <label for="radcolor" class="colores">Gris</label><br>
+                    <input type="radio" value="Azul" alt="Marque el color del carro" id="radcolor" name="radcolor" />
+                    <label for="radcolor" class="colores">Azul</label><br>
+                    <input type="radio" value="Verde" alt="Marque el color del carro" id="radcolor" name="radcolor" />
+                    <label for="radcolor" class="colores">Verde</label><br>
+                    <input type="radio" value="Rojo" alt="Marque el color del carro" id="radcolor" name="radcolor" />
+                    <label for="radcolor" class="colores">Rojo</label><br>
+                    <input type="radio" value="Amarillo" alt="Marque el color del carro" id="radcolor" name="radcolor" />
+                    <label for="radcolor" class="colores">Amarillo</label><br>
+                    <input type="radio" value="Beige" alt="Marque el color del carro" id="radcolor" name="radcolor" />
+                    <label for="radcolor" class="colores">Beige</label> <br/>
 
-                    </fieldset>
-                    <div>
-                        <label for="radcolor" class="colores">Color:</label><br />
-                        <input type="radio" value="Blanco" alt="Marque el color del carro" id="radcolor" name="radcolor" checked="checked"/>
-                        <label for="radcolor" class="colores">Blanco</label><br>
-                        <input type="radio" value="Negro" alt="Marque el color del carro" id="radcolor" name="radcolor" />
-                        <label for="radcolor" class="colores">Negro</label><br>
-                        <input type="radio" value="Gris" alt="Marque el color del carro" id="radcolor" name="radcolor" />
-                        <label for="radcolor" class="colores">Gris</label><br>
-                        <input type="radio" value="Azul" alt="Marque el color del carro" id="radcolor" name="radcolor" />
-                        <label for="radcolor" class="colores">Azul</label><br>
-                        <input type="radio" value="Verde" alt="Marque el color del carro" id="radcolor" name="radcolor" />
-                        <label for="radcolor" class="colores">Verde</label><br>
-                        <input type="radio" value="Rojo" alt="Marque el color del carro" id="radcolor" name="radcolor" />
-                        <label for="radcolor" class="colores">Rojo</label><br>
-                        <input type="radio" value="Amarillo" alt="Marque el color del carro" id="radcolor" name="radcolor" />
-                        <label for="radcolor" class="colores">Amarillo</label><br>
-                        <input type="radio" value="Beige" alt="Marque el color del carro" id="radcolor" name="radcolor" />
-                        <label for="radcolor" class="colores">Beige</label> <br/>
-                    </div>
-                    <div>
-                        <label for="txtanio">Año: </label>
-                    <input type="number" name="txtanio" placeholder="2014" maxlength="4" required="required"/>
-                    </div>
+                    <label for="Fecha">Fecha de registro: </label>
+                    <input type="date" name="fecha" required="required"/>
+
+                    <label for="txtanio">Año: </label>
+                    <input type="number" name="textanio" id="txtanio" minlength="4" maxlength="4" required="required"/>
+
+                    <label for="placa">Placas: </label>
+                    <input type="text" name="placa" required="required"/>
+
+                    <label for="fallas">Fallas: </label>
+                    <textarea name="fallas" id="fallas" cols="30" rows="10"></textarea>
                 </fieldset>
                 
                 
@@ -121,11 +95,39 @@
                     <input type="button" name="btnReg" id="btnReg" value="Registrar"/>
                 </div>
             </form>
-
-            <div id="tabla">
-            </div>
             <script src="js/registro.js"></script>
         </article>
     </section>
+    <table id="autos">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Color</th>
+                <th>Modelo</th>
+                <th>Fabrica</th>
+                <th>Falla</th>
+                <th>Placa</th>
+                <th>Año</th>
+                <th>Fecha</th>
+                <th>Nit</th>
+                <th>DUI</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
