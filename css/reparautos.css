@@ -5,44 +5,72 @@
 
 body{
     background-color: #f0f2eb;
+    margin: 0;
 }
-header{
+header, h2{
     text-align: center;
     text-transform: uppercase;
 }
 
 section{
     display: flex;
-    width: 90%;
+    width: 95vw;
+    padding: 1%;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 article{
+    width:80vw;
     background-color: white;
     border-radius: 2%;
-    padding: 2%;
+    padding: 1%;
+    
+}
+
+article form{
+    display: flex;
+    flex-direction: row;
 }
 
 fieldset{
+    width: 40%;
+    height: 100%;
+    margin: 2% auto;
     background-color: rgba(245, 245, 245, 0.795);
     border: none;
     border-radius: 5%;
-    flex-direction: column;
+    padding-left: 3%;
+}
+legend{
+    text-align: center;
+    font-weight: bold;
+}
+
+div{
+    padding: 2% 1%;
+    display: flex;
+    align-items: center;
+}
+
+label{
+    padding-right: 2%;
 }
 
 input{
     border-top: none;
     border-left: none;
     border-right: none;
-    width: fit-content;
+    width: 90%;
     background-color: transparent;
     outline: none;
+    
 }   
 
 #btnReg{
     width: 100%;
     margin: 1%;
-    padding: 1%;
+    padding: 1%;    
     border-bottom: none;
     border-radius: 1em;
     font-size: 125%;
@@ -62,17 +90,40 @@ input{
     text-align: center;
 }
 
+.opc2{
+    text-align: center;
+    padding: 3%;
+}
+
 table{
     background-color: rgb(255, 255, 255);
 }
-
+th{
+    background-color: #00a0b0;
+    width: 100%;
+}
 td,th{
-    border: 1px solid gray;
+    border: 1px solid gray;    
 }
 
 footer{
     text-align: center;
+    background-color: #6a4a3c;
+    padding: 2%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 150%;
 }
 #btnReg:hover{
     background-color: #00a0b0;
+}
+
+.colir{
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: justify;
+    font-size: 80%;
+    margin-left: -2%;
+}
+.colir label, .colir input{
+    padding: 0;
 }
