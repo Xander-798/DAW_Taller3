@@ -1,3 +1,8 @@
+var bandera = false;
+var valoresAceptados = /^\d*$/;
+var valoresAceptados2 = /^[a-zA-Z]+$/g;
+var valoresAceptados3 = /[0-9]+/g;
+
 var nombreLocal = [];
 var duiLocal = [];
 var apellidosLocal = [];
@@ -82,16 +87,64 @@ function iniciar(){
                 });
                 }
 
-            //deterina la selección de rol
-            //selvalue = document.frmRegistro.seldegree.options[frmRegistro.seldegree.selectedIndex].value;
-
-            //Objeto a registrar
-            nuevoUsuario = new Usuario(document.frmRegistro.nombre.value, document.frmRegistro.apellidos.value, 
-                document.frmRegistro.dui.value, document.frmRegistro.nit.value, document.frmRegistro.fecha.value, document.frmRegistro.placa.value,seleccion ,document.frmRegistro.selfab.value,
-                document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
-
-                nuevoUsuario.registrar();
-                mostrar();
+            //Validaciones
+            if (valoresAceptados.test(document.frmRegistro.dui.value)){
+                bandera = false;
+              } else {
+                bandera = true;
+                alert("El DUI sólo puede formarse por números", "Error");
+            }
+            console.log(valoresAceptados);
+            if (document.frmRegistro.dui.value.length == 8) {
+            bandera =false;
+            }else{
+            bandera = true;
+            alert("El DUI debe contener sólo 8 dígitos", "Error");
+            }
+      
+            //validación NIT
+            if (valoresAceptados.test(document.frmRegistro.nit.value)){
+                bandera = false;
+              } else {
+                bandera = true;
+                alert("El NIT sólo puede formarse por números", "Error");
+            }
+      
+            if (document.frmRegistro.nit.value.length == 14) {
+            bandera =false;
+            }else{
+            bandera = true;
+            alert("El NIT debe contener sólo 14 dígitos", "Error");
+            }
+            //Validación placa
+            if (valoresAceptados2.test(document.frmRegistro.placa.value) || valoresAceptados3.test(document.frmRegistro.placa.value) && document.frmRegistro.placa.value.length == 6){
+                bandera = false;
+              } else {
+                bandera = true;
+                alert("La Placa se puede ingresar con números y letras, con 6 carácteres.", "Error");
+            }
+      
+            var campos = document.getElementsByTagName('input');
+            for (var i = 0, len =  campos.length-1; i < len; i++) {
+                if (campos[i].value == "" || campos[i].value == " ") {
+                    bandera = true;
+            }
+            }
+                //Objeto a registrar
+      
+                 
+                  nuevoUsuario = new Usuario(document.frmRegistro.nombre.value, document.frmRegistro.apellidos.value,
+                      document.frmRegistro.dui.value, document.frmRegistro.nit.value, document.frmRegistro.fecha.value, document.frmRegistro.placa.value,seleccion ,document.frmRegistro.selfab.value,
+                      document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
+                 
+                  if (bandera == false) {
+                      nuevoUsuario.registrar();
+                      }else{
+                        alert("Revise los formatos de los valores ingresados", "Error");            
+                  }
+                      mostrar();
+                
+           
 
         }, false);
     }
@@ -122,13 +175,62 @@ function iniciar(){
             //deterina la selección de rol
             //selvalue = document.frmRegistro.seldegree.options[frmRegistro.seldegree.selectedIndex].value;
 
-            //Objeto a registrar
-            nuevoUsuario = new Usuario(document.frmRegistro.nombre.value, document.frmRegistro.apellidos.value, 
-                document.frmRegistro.dui.value, document.frmRegistro.nit.value, document.frmRegistro.fecha.value, document.frmRegistro.placa.value, seleccion ,document.frmRegistro.selfab.value,
-                document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
-
-                nuevoUsuario.registrar();
-                mostrar();
+            //Validaciones
+            if (valoresAceptados.test(document.frmRegistro.dui.value)){
+                bandera = false;
+              } else {
+                bandera = true;
+                alert("El DUI sólo puede formarse por números", "Error");
+            }
+            console.log(valoresAceptados);
+            if (document.frmRegistro.dui.value.length == 8) {
+            bandera =false;
+            }else{
+            bandera = true;
+            alert("El DUI debe contener sólo 8 dígitos", "Error");
+            }
+      
+            //validación NIT
+            if (valoresAceptados.test(document.frmRegistro.nit.value)){
+                bandera = false;
+              } else {
+                bandera = true;
+                alert("El NIT sólo puede formarse por números", "Error");
+            }
+      
+            if (document.frmRegistro.nit.value.length == 14) {
+            bandera =false;
+            }else{
+            bandera = true;
+            alert("El NIT debe contener sólo 14 dígitos", "Error");
+            }
+            //Validación placa
+            if (valoresAceptados2.test(document.frmRegistro.placa.value) || valoresAceptados3.test(document.frmRegistro.placa.value) && document.frmRegistro.placa.value.length == 6){
+                bandera = false;
+              } else {
+                bandera = true;
+                alert("La Placa se puede ingresar con números y letras, con 6 carácteres.", "Error");
+            }
+      
+            var campos = document.getElementsByTagName('input');
+            for (var i = 0, len =  campos.length-1; i < len; i++) {
+                if (campos[i].value == "" || campos[i].value == " ") {
+                    bandera = true;
+            }
+            }
+                //Objeto a registrar
+      
+                 
+                  nuevoUsuario = new Usuario(document.frmRegistro.nombre.value, document.frmRegistro.apellidos.value,
+                      document.frmRegistro.dui.value, document.frmRegistro.nit.value, document.frmRegistro.fecha.value, document.frmRegistro.placa.value,seleccion ,document.frmRegistro.selfab.value,
+                      document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
+                 
+                  if (bandera == false) {
+                      nuevoUsuario.registrar();
+                      }else{
+                        alert("Revise los formatos de los valores ingresados", "Error");            
+                  }
+                      mostrar();
         });
     }
 }
