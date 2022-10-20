@@ -18,27 +18,16 @@ section{
     justify-content: center;
 }
 article{
-    background-color: #e1edb9;
+    background-color: white;
     border-radius: 2%;
     padding: 2%;
 }
 
 fieldset{
-    background-color: #d4ee5e;
+    background-color: rgba(245, 245, 245, 0.795);
     border: none;
     border-radius: 5%;
     flex-direction: column;
-}
-
-
-legend{
-    font-size: 120%;
-    font-weight: bold;
-}
-
-fieldset > legend{
-    font-size: 110%;
-    font-weight:normal;
 }
 
 input{
@@ -60,6 +49,29 @@ input{
     text-transform: uppercase;
     color: white;
     background-color: #6a4a3c;
+}
+#btnReg:hover{
+    background-color: rgba(138, 89, 24, 0.603);
+    cursor: pointer;
+    transition: 1.25s;
+}
+
+#lg2,#lg1{
+    font-weight: bold;
+    font-size: 23px;
+    text-align: center;
+}
+
+table{
+    background-color: rgb(255, 255, 255);
+}
+
+td,th{
+    border: 1px solid gray;
+}
+
+footer{
+    text-align: center;
 }
 #btnReg:hover{
     background-color: #00a0b0;
