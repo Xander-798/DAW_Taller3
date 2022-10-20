@@ -1,3 +1,29 @@
+var nombreLocal = [];
+var duiLocal = [];
+var apellidosLocal = [];
+var fabricaLocal = [];
+var nitLocal = [];
+var modeloLocal = [];
+var colorLocal = [];
+var añoLocal= [];
+var placaLocal = [];
+var fechaLocal = [];
+var fallasLocal = [];
+
+if(localStorage.getItem("fabrica")){
+    nombreLocal = JSON.parse(localStorage.getItem("nombre"));
+    apellidosLocal = JSON.parse(localStorage.getItem("apellido"));
+    duiLocal = JSON.parse(localStorage.getItem("dui"));
+    modeloLocal = JSON.parse(localStorage.getItem("modelo"));
+    colorLocal = JSON.parse(localStorage.getItem("color"));
+    añoLocal = JSON.parse(localStorage.getItem("año"));
+    fechaLocal = JSON.parse(localStorage.getItem("fecha"));
+    fallasLocal = JSON.parse(localStorage.getItem("fallas"));
+    fabricaLocal = JSON.parse(localStorage.getItem("fabrica"));
+    nitLocal = JSON.parse(localStorage.getItem("nit"));
+    placaLocal = JSON.parse(localStorage.getItem("placa"));
+}
+
 //Registrar el evento click al presionar el boton de Registro
 function iniciar(){
     var btnenviar = document.getElementById("btnReg");
@@ -65,7 +91,7 @@ function iniciar(){
                 document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
 
                 nuevoUsuario.registrar();
-                nuevoUsuario.mostrar();
+                mostrar();
 
         }, false);
     }
@@ -102,7 +128,7 @@ function iniciar(){
                 document.frmRegistro.selmod.value, document.frmRegistro.txtanio.value, document.frmRegistro.fallas.value);
 
                 nuevoUsuario.registrar();
-                nuevoUsuario.mostrar();
+                mostrar();
         });
     }
 }
@@ -155,6 +181,7 @@ else if(window.attachEvent){
 //Definiendo la clase Usuario a través del uso de sintexis de función
 
 function Usuario(nombre, apellido, dui, nit, fecha, placa, color, fabrica, modelo, año ,fallas){
+
     //Propiedades de la clase
     this.nombre = nombre;
     this.apellidos = apellido;
@@ -170,41 +197,30 @@ function Usuario(nombre, apellido, dui, nit, fecha, placa, color, fabrica, model
 
     //Métodos de la clase
     this.registrar = function(){
-        var nombre = [];
-        var dui = [];
-        var apellidos = [];
-        var fabrica = [];
-        var nit = [];
-        var modelo = [];
-        var color = [];
-        var año = [];
-        var placa = [];
-        var fecha = [];
-        var fallas = [];
 
-        nombre.push(this.nombre);
-        apellidos.push(this.apellidos);
-        dui.push(this.dui);
-        nit.push(this.nit);
-        placa.push(this.placa);
-        fallas.push(this.fallas);
-        fecha.push(this.fecha);
-        año.push(this.año);
-        color.push(this.color);
-        modelo.push(this.modelo);
-        fabrica.push(this.fabrica);
+        nombreLocal.push(this.nombre);
+        apellidosLocal.push(this.apellidos);
+        duiLocal.push(this.dui);
+        nitLocal.push(this.nit);
+        placaLocal.push(this.placa);
+        fallasLocal.push(this.fallas);
+        fechaLocal.push(this.fecha);
+        añoLocal.push(this.año);
+        colorLocal.push(this.color);
+        modeloLocal.push(this.modelo);
+        fabricaLocal.push(this.fabrica);
 
-        localStorage.setItem("nombre",JSON.stringify(nombre));
-        localStorage.setItem("apellido",JSON.stringify(apellidos));
-        localStorage.setItem("dui",JSON.stringify(dui));
-        localStorage.setItem("nit",JSON.stringify(nit));
-        localStorage.setItem("placa",JSON.stringify(placa));
-        localStorage.setItem("color",JSON.stringify(color));
-        localStorage.setItem("modelo",JSON.stringify(modelo));
-        localStorage.setItem("fabrica",JSON.stringify(fabrica));
-        localStorage.setItem("año",JSON.stringify(año));
-        localStorage.setItem("fecha",JSON.stringify(fecha));
-        localStorage.setItem("fallas",JSON.stringify(fallas));
+        localStorage.setItem("nombre",JSON.stringify(nombreLocal));
+        localStorage.setItem("apellido",JSON.stringify(apellidosLocal));
+        localStorage.setItem("dui",JSON.stringify(duiLocal));
+        localStorage.setItem("nit",JSON.stringify(nitLocal));
+        localStorage.setItem("placa",JSON.stringify(placaLocal));
+        localStorage.setItem("color",JSON.stringify(colorLocal));
+        localStorage.setItem("modelo",JSON.stringify(modeloLocal));
+        localStorage.setItem("fabrica",JSON.stringify(fabricaLocal));
+        localStorage.setItem("año",JSON.stringify(añoLocal));
+        localStorage.setItem("fecha",JSON.stringify(fechaLocal));
+        localStorage.setItem("fallas",JSON.stringify(fallasLocal));
     };
 
     /*this.setcod = function(){
@@ -242,40 +258,28 @@ function Usuario(nombre, apellido, dui, nit, fecha, placa, color, fabrica, model
         return lok;
     };*/
 
-    this.mostrar = function(){
+    /*this.mostrar = function(){
+        var tbody = document.getElementById("tbody");
         var tbody = document.getElementById("tbody");
 
         tbody.innerHTML = '';
-
-        var nombre;
-        var duiN;
-        var apellidos;
-        var fabrica;
-        var nit;
-        var modelo;
-        var color;
-        var año;
-        var placa;
-        var fecha;
-        var fallas;
-
-        nombre = JSON.parse(localStorage.getItem("nombre"));
-        apellidos = JSON.parse(localStorage.getItem("apellido"));
-        duiN = JSON.parse(localStorage.getItem("dui"));
-        modelo = JSON.parse(localStorage.getItem("modelo"));
-        color = JSON.parse(localStorage.getItem("color"));
-        año = JSON.parse(localStorage.getItem("año"));
-        fecha = JSON.parse(localStorage.getItem("fecha"));
-        fallas = JSON.parse(localStorage.getItem("fallas"));
-        fabrica = JSON.parse(localStorage.getItem("fabrica"));
-        nit = JSON.parse(localStorage.getItem("nit"));
-        placa = JSON.parse(localStorage.getItem("placa"));
-
-        var cant = placa.length;
-
-for(var i = 0; i < cant ; i++){
+    
+        nombreLocal = JSON.parse(localStorage.getItem("nombre"));
+        apellidosLocal = JSON.parse(localStorage.getItem("apellido"));
+        duiLocal = JSON.parse(localStorage.getItem("dui"));
+        modeloLocal = JSON.parse(localStorage.getItem("modelo"));
+        colorLocal = JSON.parse(localStorage.getItem("color"));
+        añoLocal = JSON.parse(localStorage.getItem("año"));
+        fechaLocal = JSON.parse(localStorage.getItem("fecha"));
+        fallasLocal = JSON.parse(localStorage.getItem("fallas"));
+        fabricaLocal = JSON.parse(localStorage.getItem("fabrica"));
+        nitLocal = JSON.parse(localStorage.getItem("nit"));
+        placaLocal = JSON.parse(localStorage.getItem("placa"));
+    
+        cant = placaLocal.length;
+    for(var i = 0; i < cant ; i++){
         var fila = document.createElement("tr");
-
+    
         var celdaNombre = document.createElement("td"),
         celdaApe = document.createElement("td"),
         celdaDui = document.createElement("td"),
@@ -287,18 +291,18 @@ for(var i = 0; i < cant ; i++){
         celdaPlaca = document.createElement("td"),
         celdaFalla = document.createElement("td"),
         celdaFecha = document.createElement("td");
-
-        var txtNombre = document.createTextNode(nombre[i]),
-        txtApe = document.createTextNode(apellidos[i]),
-        txtPlaca = document.createTextNode(placa[i]),
-        txtModelo = document.createTextNode(modelo[i]),
-        txtDui = document.createTextNode(duiN[i]),
-        txtNit = document.createTextNode(nit[i]),
-        txtAño = document.createTextNode(año[i]),
-        txtFecha = document.createTextNode(fecha[i]),
-        txtFallas = document.createTextNode(fallas[i]),
-        txtColor = document.createTextNode(color[i]),
-        txtFabrica = document.createTextNode(fabrica[i]);
+    
+        var txtNombre = document.createTextNode(nombreLocal[i]),
+        txtApe = document.createTextNode(apellidosLocal[i]),
+        txtPlaca = document.createTextNode(placaLocal[i]),
+        txtModelo = document.createTextNode(modeloLocal[i]),
+        txtDui = document.createTextNode(duiLocal[i]),
+        txtNit = document.createTextNode(nitLocal[i]),
+        txtAño = document.createTextNode(añoLocal[i]),
+        txtFecha = document.createTextNode(fechaLocal[i]),
+        txtFallas = document.createTextNode(fallasLocal[i]),
+        txtColor = document.createTextNode(colorLocal[i]),
+        txtFabrica = document.createTextNode(fabricaLocal[i]);
         
         celdaNombre.appendChild(txtNombre);
         celdaApe.appendChild(txtApe);
@@ -311,7 +315,7 @@ for(var i = 0; i < cant ; i++){
         celdaAño.appendChild(txtAño);
         celdaPlaca.appendChild(txtPlaca);
         celdaFecha.appendChild(txtFecha);
-
+    
         fila.appendChild(celdaNombre);
         fila.appendChild(celdaApe);
         fila.appendChild(celdaColor);
@@ -323,9 +327,94 @@ for(var i = 0; i < cant ; i++){
         fila.appendChild(celdaFecha);
         fila.appendChild(celdaNit);
         fila.appendChild(celdaDui);
-
+    
         tbody.appendChild(fila); 
-}
-    };
+    }
+    };*/
 
+}
+
+function mostrar(){
+    var tbody = document.getElementById("tbody");
+
+    tbody.innerHTML = '';
+
+    var nombreLocal;
+    var apellidosLocal;;
+    var duiLocal;
+    var modeloLocal;
+    var colorLocal;
+    var añoLocal;
+    var fechaLocal;
+    var fallasLocal;
+    var fabricaLocal;
+    var nitLocal;
+    var placaLocal;
+
+    nombreLocal = JSON.parse(localStorage.getItem("nombre"));
+    apellidosLocal = JSON.parse(localStorage.getItem("apellido"));
+    duiLocal = JSON.parse(localStorage.getItem("dui"));
+    modeloLocal = JSON.parse(localStorage.getItem("modelo"));
+    colorLocal = JSON.parse(localStorage.getItem("color"));
+    añoLocal = JSON.parse(localStorage.getItem("año"));
+    fechaLocal = JSON.parse(localStorage.getItem("fecha"));
+    fallasLocal = JSON.parse(localStorage.getItem("fallas"));
+    fabricaLocal = JSON.parse(localStorage.getItem("fabrica"));
+    nitLocal = JSON.parse(localStorage.getItem("nit"));
+    placaLocal = JSON.parse(localStorage.getItem("placa"));
+
+    cant = placaLocal.length;
+for(var i = 0; i < cant ; i++){
+    var fila = document.createElement("tr");
+
+    var celdaNombre = document.createElement("td"),
+    celdaApe = document.createElement("td"),
+    celdaDui = document.createElement("td"),
+    celdaAño = document.createElement("td"),
+    celdaColor = document.createElement("td"),
+    celdaModelo = document.createElement("td"),
+    celdaFabrica = document.createElement("td"),
+    celdaNit = document.createElement("td"),
+    celdaPlaca = document.createElement("td"),
+    celdaFalla = document.createElement("td"),
+    celdaFecha = document.createElement("td");
+
+    var txtNombre = document.createTextNode(nombreLocal[i]),
+    txtApe = document.createTextNode(apellidosLocal[i]),
+    txtPlaca = document.createTextNode(placaLocal[i]),
+    txtModelo = document.createTextNode(modeloLocal[i]),
+    txtDui = document.createTextNode(duiLocal[i]),
+    txtNit = document.createTextNode(nitLocal[i]),
+    txtAño = document.createTextNode(añoLocal[i]),
+    txtFecha = document.createTextNode(fechaLocal[i]),
+    txtFallas = document.createTextNode(fallasLocal[i]),
+    txtColor = document.createTextNode(colorLocal[i]),
+    txtFabrica = document.createTextNode(fabricaLocal[i]);
+    
+    celdaNombre.appendChild(txtNombre);
+    celdaApe.appendChild(txtApe);
+    celdaColor.appendChild(txtColor);
+    celdaFalla.appendChild(txtFallas);
+    celdaNit.appendChild(txtNit);
+    celdaDui.appendChild(txtDui);
+    celdaModelo.appendChild(txtModelo);
+    celdaFabrica.appendChild(txtFabrica);
+    celdaAño.appendChild(txtAño);
+    celdaPlaca.appendChild(txtPlaca);
+    celdaFecha.appendChild(txtFecha);
+
+    fila.appendChild(celdaNombre);
+    fila.appendChild(celdaApe);
+    fila.appendChild(celdaColor);
+    fila.appendChild(celdaModelo);
+    fila.appendChild(celdaFabrica);
+    fila.appendChild(celdaFalla);
+    fila.appendChild(celdaPlaca);
+    fila.appendChild(celdaAño);
+    fila.appendChild(celdaFecha);
+    fila.appendChild(celdaNit);
+    fila.appendChild(celdaDui);
+
+    tbody.appendChild(fila); 
+}
 }
